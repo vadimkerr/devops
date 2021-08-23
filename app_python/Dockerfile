@@ -1,6 +1,6 @@
 FROM python:3.9-alpine
 
-RUN apk --no-cache add build-base=0.4-r1 && pip --no-cache-dir install pipenv==2021.5.29
+RUN apk --no-cache add build-base=0.5-r2 && pip --no-cache-dir install pipenv==2021.5.29
 
 WORKDIR /app
 COPY Pipfile .
