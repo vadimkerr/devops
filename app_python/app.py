@@ -1,6 +1,7 @@
+from datetime import datetime
+
 import pytz as pytz
 from flask import Flask
-from datetime import datetime
 
 app = Flask(__name__)
 
