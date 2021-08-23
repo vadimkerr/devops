@@ -9,7 +9,3 @@ app = Flask(__name__)
 def current_time():
     tz = pytz.timezone("Europe/Moscow")
     return str(datetime.now().astimezone(tz))
-
-
-if __name__ == "__main__":
-    app.run()
