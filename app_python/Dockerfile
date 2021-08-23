@@ -1,13 +1,11 @@
 FROM python:3.9-alpine
 
-RUN apk add build-base
-RUN pip install pipenv
+RUN apk --no-cache add build-base && pip --no-cache-dir install pipenv==2021.5.29
 
 WORKDIR /app
 COPY Pipfile .
 COPY Pipfile.lock .
-RUN pipenv install --system
-RUN rm Pipfile Pipfile.lock
+RUN pipenv install --system && rm Pipfile Pipfile.lock
 
 COPY src .
 
