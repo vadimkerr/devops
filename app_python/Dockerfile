@@ -1,21 +1,15 @@
 FROM python:3.9-alpine
+
+RUN apk add build-base
 RUN pip install pipenv
 
-WORKDIR /etc/app
-
+WORKDIR /app
 COPY Pipfile .
 COPY Pipfile.lock .
-RUN pipenv lock -r > /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt
+RUN pipenv install --system
+RUN rm Pipfile Pipfile.lock
 
-RUN rm Pipfile Pipfile.lock /tmp/requirements.txt
+COPY src .
 
-COPY app.py .
-
-EXPOSE 5000
-
-ENV FLASK_APP=app.py
-ENV FLASK_RUN_HOST=0.0.0.0
-ENV FLASK_RUN_PORT=8000
-
-CMD ["python", "-m", "flask", "run"]
+EXPOSE 8000
+CMD ["uvicorn", "main:app", "--host=0.0.0.0"]
