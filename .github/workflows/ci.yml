@@ -50,9 +50,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: pytest
+      - name: Test server
         run: |
           cd app_python
           pip install pipenv==2021.5.29
-          pipenv install --system
+          pipenv install --dev --system
           pytest app_python/tests
