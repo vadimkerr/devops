@@ -1,5 +1,7 @@
 # DevOps Course Deliverables
 
+![](https://github.com/vadimkerr/devops-uni/actions/workflows/ci.yml/badge.svg)
+
 ## setup
 
 prerequisites: docker, python3.9

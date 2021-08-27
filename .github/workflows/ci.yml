@@ -55,7 +55,7 @@ jobs:
         with:
           python-version: "3.9"
 
-      - name: Test server
+      - name: Test Server
         run: |
           cd app_python
           pip install pipenv==2021.5.29
