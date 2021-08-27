@@ -10,6 +10,10 @@ pytz = "2021.1"
 
 [dev-packages]
 pre-commit = "*"
+requests = "*"
+pytest = "*"
+freezegun = "*"
+pytest-cov = "*"
 
 [requires]
 python_version = "3.9"

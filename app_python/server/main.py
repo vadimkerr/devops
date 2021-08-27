@@ -9,4 +9,4 @@ app = FastAPI()
 @app.get("/")
 async def current_time():
     tz = pytz.timezone("Europe/Moscow")
-    return datetime.now().astimezone(tz)
+    return str(datetime.now(tz=tz))

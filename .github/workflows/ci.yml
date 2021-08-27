@@ -50,5 +50,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Fake test
-        run: echo Fake tests are passing!
+      - name: pytest
+        run: |
+          cd app_python
+          pip install pipenv==2021.5.29
+          pipenv install --system
+          pytest app_python/tests
