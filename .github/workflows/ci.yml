@@ -55,4 +55,4 @@ jobs:
           cd app_python
           pip install pipenv==2021.5.29
           pipenv install --dev --system
-          pytest app_python/tests
+          pipenv run pytest tests
