@@ -20,3 +20,9 @@ prerequisites: docker, python3.9
 ### using docker
 
 `docker run -it --rm -p 8000:8000 vadimkerr/devops-uni:latest`
+
+## unit tests
+
+the app is dead simple, so there's only one test that mocks current time and checks if time returned by API is correct.
+
+to run tests: `pipenv run pytest app_python/tests`
