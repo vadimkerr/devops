@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
     needs:
       - lint
       - test
@@ -50,5 +51,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Fake test
-        run: echo Fake tests are passing!
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.9"
+
+      - name: Test Server
+        run: |
+          cd app_python
+          pip install pipenv==2021.5.29
+          pipenv install --dev --system
+          pipenv run pytest tests
