@@ -16,7 +16,7 @@ pipeline {
         stage('install dependencies') {
             steps {
                 sh 'apk --no-cache add build-base=0.5-r2 && pip --no-cache-dir install pipenv==2021.5.29'
-                sh 'pipenv install --system'
+                sh 'cd app_python && pipenv install --system'
             }
         }
 
