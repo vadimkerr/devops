@@ -1,0 +1,17 @@
+- name: Create app directory
+  file:
+    path: /opt/devops-uni
+    state: directory
+
+- name: Copy docker-compse.yml to VM
+  copy:
+    src: ../../../docker-compose.yml
+    dest: /opt/devops-uni/docker-compose.yml
+
+- name: Run services
+  docker_compose:
+    project_src: /opt/devops-uni
+    project_name: devops-uni
+    build: no
+    pull: yes
+    restarted: yes

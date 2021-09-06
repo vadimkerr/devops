@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  devops:
+    image: vadimkerr/devops-uni
+    ports:
+      - "8000:8000"

@@ -1,0 +1,9 @@
+- name: Configurations to "remote" host
+  hosts: vm
+  vars:
+    pip_install_packages:
+      - name: docker
+      - name: docker-compose
+  roles:
+    - geerlingguy.pip
+    - deploy
