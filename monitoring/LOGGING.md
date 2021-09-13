@@ -4,6 +4,9 @@
 
 ![](images/grafana.png)
 ![](images/promtail.png)
+![](images/prometheus.png)
+![](images/dashboard-loki.png)
+![](images/dashboard-prometheus.png)
 
 ## best practices
 
