@@ -1,3 +1,7 @@
 # k8s
 
-![](images/k8s-pods-and-services.png)
+![](images/k8s.png)
+
+## helm
+
+![](images/helm.png)

@@ -4,6 +4,7 @@ repos:
     rev: v2.3.0
     hooks:
       - id: check-yaml
+        exclude: "k8s/devops-uni/"
       - id: end-of-file-fixer
       - id: trailing-whitespace
 
