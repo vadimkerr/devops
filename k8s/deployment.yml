@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devops-uni-deployment
+  labels:
+    app: devops-uni
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: devops-uni
+  template:
+    metadata:
+      labels:
+        app: devops-uni
+    spec:
+      containers:
+      - name: devops-uni
+        image: vadimkerr/devops-uni:latest
+        ports:
+        - containerPort: 8000
