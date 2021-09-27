@@ -17,12 +17,17 @@ x-common-params:
   logging: *default-logging
   <<: *default-resource-limits
 
+volumes:
+  app-data:
+
 services:
 
   app:
     image: vadimkerr/devops-uni:latest
     ports:
       - "8000:8000"
+    volumes:
+      - app-data:/app/data
     <<: *common-params
 
   grafana:
