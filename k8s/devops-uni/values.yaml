@@ -14,6 +14,18 @@ service:
   type: LoadBalancer
   port: 8000
 
+secret:
+  name: app-secret
+  password: SuperSecretPassword123
+
+resources:
+  requests:
+    cpu: "250m"
+    memory: "64Mi"
+  limits:
+    cpu: "500m"
+    memory: "128Mi"
+
 ingress:
   enabled: false
 
