@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: {{ include "devops-uni.fullname" . }}
   labels:
@@ -8,6 +8,16 @@ spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
+  serviceName: {{ include "devops-uni.fullname" . }}
+  podManagementPolicy: "Parallel"
+  volumeClaimTemplates:
+    - metadata:
+        name: app-data
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: "128Mi"
   selector:
     matchLabels:
       {{- include "devops-uni.selectorLabels" . | nindent 6 }}
@@ -40,6 +50,8 @@ spec:
             - name: config-volume
               mountPath: config.json
               subPath: config.json
+            - name: app-data
+              mountPath: /app/data
           env:
             - name: PASSWORD
               valueFrom:
