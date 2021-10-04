@@ -36,7 +36,20 @@ spec:
       {{- end }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      initContainers:
+        - name: wget
+          image: busybox
+          command:
+            - wget
+            - "-O"
+            - "/initialData/test.html"
+            - http://info.cern.ch
+          volumeMounts:
+            - name: wget
+              mountPath: /initialData
       volumes:
+        - name: wget
+          emptyDir: {}
         - name: config-volume
           configMap:
             name: {{ .Release.Name }}-configmap
@@ -47,6 +60,8 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           volumeMounts:
+            - name: wget
+              mountPath: /initialData
             - name: config-volume
               mountPath: config.json
               subPath: config.json
